@@ -10,11 +10,12 @@
 
 @implementation AIView
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
+- (id)init {
+    self = [super init];
+    
     if (self) {
         _display = [UILabel new];
-        
+        //cycle
         _button1 = [UIButton new];
         _button2 = [UIButton new];
         _button3 = [UIButton new];
@@ -25,6 +26,7 @@
         _button8 = [UIButton new];
         _button9 = [UIButton new];
         _button0 = [UIButton new];
+        //cycle
         _buttonDivide = [UIButton new];
         _buttonEqual = [UIButton new];
         _buttonMinus = [UIButton new];
@@ -36,9 +38,10 @@
         _buttonsNumbersList = [[NSArray alloc] initWithObjects:_button0, _button1, _button2, _button3, _button4, _button5, _button6, _button7, _button8, _button9, nil];
         _otherButtonsList = [[NSArray alloc] initWithObjects: _buttonPoint, _buttonEqual, _buttonPlus, _buttonMinus, _buttonMultiply, _buttonDivide, _buttonDel, nil];
         NSArray *operations = [[NSArray alloc] initWithObjects:@".", @"=", @"+", @"-", @"*", @"/", @"C", nil];
-        int i = 0;
-        NSString *number;
+        
+        NSString *number;//maybe *digit
 
+        int i = 0;
         for ( UIButton *button in _buttonsNumbersList ) {
             button.backgroundColor = [UIColor whiteColor];
             number = [[NSString alloc] initWithFormat:@"%i", i];
@@ -57,13 +60,24 @@
             index += 1;
             [self addSubview:button];
         }
+        
         _display.backgroundColor = [UIColor whiteColor];
         _display.text = @"0";
         [self addSubview:_display];
     }
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    return self;
+}
+
+- (void)layoutSubviews {
+    for ( UIButton *button in _buttonsNumbersList ) {
+        button.layer.cornerRadius = button.bounds.size.width / 2.0;
+    }
+    for ( UIButton *button in _otherButtonsList ) {
+        button.layer.cornerRadius = 20.0;
+    }
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
     _display.frame = CGRectMake(15, screenRect.size.height * 0.125, 285, 70);
     
     _button1.frame = CGRectMake(15, screenRect.size.height * 0.3333, 70, 70);
@@ -84,15 +98,6 @@
     _buttonMultiply.frame = CGRectMake(255, screenRect.size.height * 0.5833, 50, 50);
     _buttonDivide.frame = CGRectMake(255, screenRect.size.height * 0.7083, 50, 50);
     _buttonEqual.frame = CGRectMake(255, screenRect.size.height * 0.8333, 50, 70);
-    
-    for ( UIButton *button in _buttonsNumbersList ) {
-        button.layer.cornerRadius = button.bounds.size.width / 2.0;
-    }
-    for ( UIButton *button in _otherButtonsList ) {
-        button.layer.cornerRadius = 20.0;
-    }
-    
-    return self;
 }
 
 @end

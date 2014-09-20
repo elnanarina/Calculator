@@ -10,11 +10,6 @@
 
 @implementation AIViewController
 
-- (void)loadView {
-    _calculatorView = [AIView new];
-    self.view = _calculatorView;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _number = [[NSMutableString alloc] init];
@@ -24,7 +19,9 @@
     [_formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [_formatter setGeneratesDecimalNumbers:YES];
     
-    [_calculatorView.button0 addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_calculatorView.button0 addTarget:self
+                                action:@selector(pressButton:)
+                      forControlEvents:UIControlEventTouchUpInside];
     [_calculatorView.button1 addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
     [_calculatorView.button2 addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
     [_calculatorView.button3 addTarget:self action:@selector(pressButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -48,6 +45,11 @@
                           forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)loadView {
+    _calculatorView = [AIView new];
+    self.view = _calculatorView;
+}
+
 - (void)pressButton:(UIButton*)sender {
     NSRange range = [_number rangeOfString:@"."];
     if ( sender == _calculatorView.buttonDel ) {
@@ -59,7 +61,7 @@
             _calculatorView.display.text = _number;
         }
     } else if ( sender != _calculatorView.buttonDel ) {
-        NSString *displayString = [[NSString alloc] initWithFormat:@"%i", sender.tag];
+        NSString *displayString = [[NSString alloc] initWithFormat:@"%li", sender.tag];
         [_number appendString:displayString];
         _calculatorView.display.text = _number;
     }

@@ -14,7 +14,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [AIViewController new];
     self.window.backgroundColor = [UIColor colorWithRed:1 green:0.527 blue:0.973 alpha:1.0];
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

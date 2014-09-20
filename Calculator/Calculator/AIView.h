@@ -10,6 +10,7 @@
 
 @interface AIView : UIView
 
+//begin cycle
 @property (nonatomic) UIButton *button1;
 @property (nonatomic) UIButton *button2;
 @property (nonatomic) UIButton *button3;
@@ -20,6 +21,7 @@
 @property (nonatomic) UIButton *button8;
 @property (nonatomic) UIButton *button9;
 @property (nonatomic) UIButton *button0;
+//end cycle
 @property (nonatomic) UIButton *buttonPlus;
 @property (nonatomic) UIButton *buttonMinus;
 @property (nonatomic) UIButton *buttonMultiply;
@@ -27,7 +29,7 @@
 @property (nonatomic) UIButton *buttonPoint;
 @property (nonatomic) UIButton *buttonEqual;
 @property (nonatomic) UIButton *buttonDel;
-@property (nonatomic) UILabel *display;
+@property (nonatomic) UILabel  *display;
 
 @property (nonatomic) NSArray *buttonsNumbersList;
 @property (nonatomic) NSArray *otherButtonsList;
