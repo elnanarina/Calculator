@@ -151,7 +151,11 @@
             _result = _firstDecimalNumber.stringValue;
             [_number setString:_result];
             [_memory setString:@""];
-            _calculatorView.display.text = _result;
+            if (_result.length > sizeOfLabel ) {
+                _calculatorView.display.text = [[_result substringToIndex:sizeOfLabel] stringByAppendingString:@"e+"];
+            } else {
+                _calculatorView.display.text = _result;
+            }
         }
         if ( [_operand isEqualToString:@"*"] ) {
             _firstDecimalNumber = [_firstDecimalNumber decimalNumberByMultiplyingBy:_lastDecimalNumber];
