@@ -15,5 +15,3 @@
 @property (strong, nonatomic) AIViewController *calculatorViewController;
 
 @end
-
-//check orientations carefully
