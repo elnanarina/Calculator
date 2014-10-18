@@ -89,7 +89,7 @@
 }
 
 - (void)pressDigitalButton:(UIButton*)sender {
-    NSString *displayString = [[NSString alloc] initWithFormat:@"%i", sender.tag];
+    NSString *displayString = [[NSString alloc] initWithFormat:@"%li", (long)sender.tag];
     if ( isGotResult == 1 ) {
         [_number setString:@""];
     }
