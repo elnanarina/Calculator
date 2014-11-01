@@ -64,34 +64,38 @@
     UIDeviceOrientation currentOrientation =  [[UIDevice currentDevice] orientation];
     if (UIDeviceOrientationIsLandscape(currentOrientation)) {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
-        
-        _display.frame = CGRectMake(screenRect.size.height * 0.025, 30, screenRect.size.width * 0.95, 40);
-        NSLog(@"%f", screenRect.size.height);
-        
-        ((UIButton *)_digitalButtonsList[1]).frame = CGRectMake(screenRect.size.width * 0.025, 85, 70, 70);
-        ((UIButton *)_digitalButtonsList[2]).frame = CGRectMake(screenRect.size.width * 0.1979, 85, 70, 70);
-        ((UIButton *)_digitalButtonsList[3]).frame = CGRectMake(screenRect.size.width * 0.3646, 85, 70, 70);
-        ((UIButton *)_digitalButtonsList[4]).frame = CGRectMake(screenRect.size.width * 0.025, 165, 70, 70);
-        ((UIButton *)_digitalButtonsList[5]).frame = CGRectMake(screenRect.size.width * 0.1979, 165, 70, 70);
-        ((UIButton *)_digitalButtonsList[6]).frame = CGRectMake(screenRect.size.width * 0.3646, 165, 70, 70);
-        ((UIButton *)_digitalButtonsList[7]).frame = CGRectMake(screenRect.size.width * 0.025, 245, 70, 70);
-        ((UIButton *)_digitalButtonsList[8]).frame = CGRectMake(screenRect.size.width * 0.1979, 245, 70, 70);
-        ((UIButton *)_digitalButtonsList[9]).frame = CGRectMake(screenRect.size.width * 0.3646, 245, 70, 70);
-        ((UIButton *)_digitalButtonsList[0]).frame = CGRectMake(screenRect.size.width * 0.5521, 85, 70, 70);
+        CGFloat size;
 
-        _buttonPoint.frame = CGRectMake(screenRect.size.width * 0.5521, 165, 70, 70);
-        _buttonDel.frame = CGRectMake(screenRect.size.width * 0.5521, 245, 70, 70);
-        _buttonPlus.frame = CGRectMake(screenRect.size.width * 0.7396, 85, 50, 50);
-        _buttonMinus.frame = CGRectMake(screenRect.size.width * 0.8646, 85, 50, 50);
-        _buttonMultiply.frame = CGRectMake(screenRect.size.width * 0.7396, 165, 50, 50);
-        _buttonDivide.frame = CGRectMake(screenRect.size.width * 0.8646, 165, 50, 50);
-        
-        if ( screenRect.size.width >= 480 ) {
-            _buttonEqual.frame = CGRectMake(screenRect.size.width * 0.7396, 245, screenRect.size.width * 0.0208 + 100, 70);
+        NSLog(@"screenRect width- %f, height - %f", screenRect.size.width, screenRect.size.height);
+        if ( screenRect.size.width >= 568 ) {
+            size = screenRect.size.width;
         } else {
-            _buttonEqual.frame = CGRectMake(screenRect.size.width * 0.7396, 245, screenRect.size.width * 0.0416 + 100, 70);
+            size = screenRect.size.height;
         }
-
+        _display.frame = CGRectMake(screenRect.size.height * 0.025, 30, size * 0.95, 40);
+        ((UIButton *)_digitalButtonsList[1]).frame = CGRectMake(size * 0.025, 85, 70, 70);
+        ((UIButton *)_digitalButtonsList[2]).frame = CGRectMake(size * 0.1979, 85, 70, 70);
+        ((UIButton *)_digitalButtonsList[3]).frame = CGRectMake(size * 0.3646, 85, 70, 70);
+        ((UIButton *)_digitalButtonsList[4]).frame = CGRectMake(size * 0.025, 165, 70, 70);
+        ((UIButton *)_digitalButtonsList[5]).frame = CGRectMake(size * 0.1979, 165, 70, 70);
+        ((UIButton *)_digitalButtonsList[6]).frame = CGRectMake(size * 0.3646, 165, 70, 70);
+        ((UIButton *)_digitalButtonsList[7]).frame = CGRectMake(size * 0.025, 245, 70, 70);
+        ((UIButton *)_digitalButtonsList[8]).frame = CGRectMake(size * 0.1979, 245, 70, 70);
+        ((UIButton *)_digitalButtonsList[9]).frame = CGRectMake(size * 0.3646, 245, 70, 70);
+        ((UIButton *)_digitalButtonsList[0]).frame = CGRectMake(size * 0.5521, 85, 70, 70);
+        
+        _buttonPoint.frame = CGRectMake(size * 0.5521, 165, 70, 70);
+        _buttonDel.frame = CGRectMake(size * 0.5521, 245, 70, 70);
+        _buttonPlus.frame = CGRectMake(size * 0.7396, 85, 50, 50);
+        _buttonMinus.frame = CGRectMake(size * 0.8646, 85, 50, 50);
+        _buttonMultiply.frame = CGRectMake(size * 0.7396, 165, 50, 50);
+        _buttonDivide.frame = CGRectMake(size * 0.8646, 165, 50, 50);
+        
+        if ( size == 480 ) {
+            _buttonEqual.frame = CGRectMake(size * 0.7396, 245, size * 0.0208 + 100, 70);
+        } else {
+            _buttonEqual.frame = CGRectMake(size * 0.7396, 245, size * 0.0416 + 100, 70);
+        }
     } else {
         int width = 15;
         double height = 0.3333;
