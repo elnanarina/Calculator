@@ -1,2 +1,2 @@
-phase1
+Simple Calculator
 ======
